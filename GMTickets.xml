@@ -1,0 +1,709 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" 
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ 
+ ..\..\FrameXML\UI.xsd">
+	<Button name="GMTickets_ColumnHeaderTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="10" y="24"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="5" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.078125" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentMiddle" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="53" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.078125" right="0.90625" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="4" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.90625" right="0.96875" top="0" bottom="0.75"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnClick>
+				if ( self.sortType ) then
+					GMTickets.changeOrder(self.sortType);
+				end
+			</OnClick>
+		</Scripts>
+		<ButtonText>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="8" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<NormalFont style="GameFontHighlightSmall"/>
+		<HighlightTexture name="$parentHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="$parentLeft">
+					<Offset>
+						<AbsDimension x="-2" y="5"/>
+					</Offset>
+				</Anchor>
+				<Anchor point="BOTTOMRIGHT" relativeTo="$parentRight">
+					<Offset>
+						<AbsDimension x="2" y="-7"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+	
+	<Button name="GMTickets_StatusTemplate" virtual="true" hidden='true'>
+		<Size>
+			<AbsDimension x="400" y="16"/>
+		</Size>
+		<Layers>
+			<Layer level="BORDER">
+				<FontString name="$parent_ticketId" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="35" y="14"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_name" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="77" y="14"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent_ticketId" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="3" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_createStr" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="77" y="14"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent_name" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="3" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_lastModifiedStr" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="77" y="14"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent_createStr" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="3" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_assignedTo" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="77" y="14"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent_lastModifiedStr" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="3" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="BACKGROUND">
+				<Texture name="$parent_Texture" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="358" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="6" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<HighlightTexture file="Interface\FriendsFrame\UI-FriendsFrame-HighlightBar" alphaMode="ADD">
+			<Size>
+				<AbsDimension x="358" y="16"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset>
+						<AbsDimension x="6" y="-2"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+		<Scripts>
+			<OnLoad>
+				self.ticketId = 0;
+			</OnLoad>
+			<Onclick>
+                GMTickets.showInfo(self.ticketId);
+				GMTickets.loadTicket(self.ticketId, tonumber(string.sub(this:GetName(), 19)));
+			</Onclick>
+		</Scripts>
+	</Button>
+    
+    <Button name="GMTickets_Main" inherits="GMGenie_Window">
+		<Size>
+			<AbsDimension x="390" y="250"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" />
+		</Anchors>
+        <Scripts>
+            <OnLoad>
+                getglobal(self:GetName().."_Text"):SetText("Tickets");
+            </OnLoad>
+            <OnDoubleClick>
+                this:ClearAllPoints();
+                this:SetPoint("TOPLEFT");
+            </OnDoubleClick>
+        </Scripts>
+		<Frames>
+			<Button name="$parent_Button3" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="8" y="8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+                <Scripts>
+                    <OnClick>
+                        GMTickets.toggle();
+                    </OnClick>
+                </Scripts>
+			</Button>
+            
+            
+            
+			<Frame name="$parent_Tickets">
+				<Size>
+					<AbsDimension x="360" y="164"/>
+				</Size>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentMiddle" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+							<Size>
+								<AbsDimension x="360" y="240"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+							</Anchors>
+							<TexCoords left="0.078125" right="0.90625" top="0.5" bottom="0.75"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset>
+							<AbsDimension x="0" y="-4"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Frames>
+					<Frame name="$parent_Header" >
+						<Size>
+							<AbsDimension x="360" y="30"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOP">
+								<Offset>
+									<AbsDimension x="0" y="15"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Frames>
+							<Button name="$parent_ticketId" inherits="GMTickets_ColumnHeaderTemplate" text="#">
+								<Anchors>
+									<Anchor point="TOPLEFT">
+										<Offset>
+											<AbsDimension x="0" y="9"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										WhoFrameColumn_SetWidth(self, 50);
+										self.sortType = "ticketId";
+									</OnLoad>
+								</Scripts>
+							</Button>
+							<Button name="$parent_name" inherits="GMTickets_ColumnHeaderTemplate" text="Name">
+								<Anchors>
+									<Anchor point="TOPLEFT">
+										<Offset>
+											<AbsDimension x="50" y="9"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										WhoFrameColumn_SetWidth(self, 80);
+										self.sortType = "name";
+									</OnLoad>
+								</Scripts>
+							</Button>
+							<Button name="$parent_create" inherits="GMTickets_ColumnHeaderTemplate" text="Created">
+								<Anchors>
+									<Anchor point="TOPLEFT">
+										<Offset>
+											<AbsDimension x="130" y="9"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										WhoFrameColumn_SetWidth(self, 80);
+										self.sortType = "createStamp";
+									</OnLoad>
+								</Scripts>
+							</Button>
+							<Button name="$parent_lastModified" inherits="GMTickets_ColumnHeaderTemplate" text="Modified">
+								<Anchors>
+									<Anchor point="TOPLEFT">
+										<Offset>
+											<AbsDimension x="210" y="9"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										WhoFrameColumn_SetWidth(self, 80);
+										self.sortType = "lastModifiedStamp";
+									</OnLoad>
+								</Scripts>
+							</Button>
+							<Button name="$parent_assignedTo" inherits="GMTickets_ColumnHeaderTemplate" text="Assigned To">
+								<Anchors>
+									<Anchor point="TOPRIGHT">
+										<Offset>
+											<AbsDimension x="0" y="9"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										WhoFrameColumn_SetWidth(self, 70);
+										self.sortType = "assignedTo";
+									</OnLoad>
+								</Scripts>
+							</Button>
+						</Frames>
+					</Frame>
+					<Button name="TicketStatusButton1" inherits="GMTickets_StatusTemplate" id="1">
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="-5" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="TicketStatusButton2" inherits="GMTickets_StatusTemplate" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="TicketStatusButton1" relativePoint="BOTTOMLEFT" />
+						</Anchors>
+					</Button>
+					<Button name="TicketStatusButton3" inherits="GMTickets_StatusTemplate" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="TicketStatusButton2" relativePoint="BOTTOMLEFT" />
+						</Anchors>
+					</Button>
+					<Button name="TicketStatusButton4" inherits="GMTickets_StatusTemplate" id="4">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="TicketStatusButton3" relativePoint="BOTTOMLEFT" />
+						</Anchors>
+					</Button>
+					<Button name="TicketStatusButton5" inherits="GMTickets_StatusTemplate" id="5">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="TicketStatusButton4" relativePoint="BOTTOMLEFT" />
+                        </Anchors>
+					</Button>
+					<Button name="TicketStatusButton6" inherits="GMTickets_StatusTemplate" id="6">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="TicketStatusButton5" relativePoint="BOTTOMLEFT" />
+						</Anchors>
+					</Button>
+					<Button name="TicketStatusButton7" inherits="GMTickets_StatusTemplate" id="7">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="TicketStatusButton6" relativePoint="BOTTOMLEFT" />
+						</Anchors>
+					</Button>
+					<Button name="TicketStatusButton8" inherits="GMTickets_StatusTemplate" id="8">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="TicketStatusButton7" relativePoint="BOTTOMLEFT" />
+						</Anchors>
+					</Button>
+					<Button name="TicketStatusButton9" inherits="GMTickets_StatusTemplate" id="9">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="TicketStatusButton8" relativePoint="BOTTOMLEFT" />
+						</Anchors>
+					</Button>
+					<Button name="TicketStatusButton10" inherits="GMTickets_StatusTemplate" id="10">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="TicketStatusButton9" relativePoint="BOTTOMLEFT" />
+						</Anchors>
+					</Button>
+				</Frames>
+				<Scripts>
+					<OnMouseWheel>
+						if arg1 == 1 then
+							GMTickets.goToPrevious();
+						else
+							GMTickets.goToNext();
+						end
+					</OnMouseWheel>
+				</Scripts>
+			</Frame>
+            
+            
+            
+			<Button name="$parent_Next" inherits="GMGenie_NextButton">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-65" y="13"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GMTickets.goToNext();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Previous" inherits="GMGenie_PreviousButton">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="65" y="13"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GMTickets.goToPrevious();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Frame name="$parent_Info">
+				<Size>
+					<AbsDimension x="250" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="13"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer>
+						<FontString name="$parent_Text" inherits="GameFontNormalSmall" text=""></FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Button name="$parent_Refresh" inherits="GMGenie_Button" text='Refresh'>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-15" y="15"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GMTickets.refresh();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Settings" inherits="GMGenie_Button" text='Settings'>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="15" y="15"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GMTickets.ShowOptions();
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Button>
+	
+    
+    
+    <Button name="GMTickets_View" inherits="GMGenie_Window">
+		<Size>
+			<AbsDimension x="245" y="250"/>
+		</Size>
+		<Anchors>
+			<Anchor point="LEFT" relativeTo="GMTickets_Main" relativePoint="RIGHT" />
+		</Anchors>
+        <Scripts>
+            <OnDoubleClick>
+                this:ClearAllPoints();
+                this:SetPoint("LEFT", GMTickets_Main, "RIGHT");
+            </OnDoubleClick>
+            <OnHide>
+                GMTickets.close();
+            </OnHide>
+        </Scripts>
+		<Frames>
+            
+            <Frame name="$parent_Ticket" enableMouse="true" inherits="GMGenie_Input_TextArea">
+				<Size>
+					<AbsDimension x="191" y="192" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="15" y="-22"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+                <Scripts>
+                    <OnLoad>
+                        getglobal(this:GetName().."_Frame_Text"):SetAutoFocus(false);
+                        getglobal(this:GetName().."_Frame_Text"):SetScript("OnChar", GMTickets.showMessage);
+                    </OnLoad>
+                </Scripts>
+            </Frame>
+            
+			<Button name="$parent_Delete" inherits="GMGenie_Button" text='Delete'>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="15" y="15"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GMTickets.delete();
+					</OnClick>
+				</Scripts>
+			</Button>
+            <Button name="$parent_Comment" inherits="GMGenie_Button" text='Comment'>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent_Delete" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+                    <OnLoad>
+                        self:Disable();
+                    </OnLoad>
+					<OnClick>
+						GMTickets.comment();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Assign" inherits="GMGenie_Button" text='Assign' disabled="true">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent_Comment" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						this:RegisterForClicks("LeftButtonUp","RightButtonUp");
+                        self:Disable();
+					</OnLoad>
+					<OnClick>
+						if (button == "RightButton") then
+							GMTickets.assign();
+						else
+							GMTickets.assignToSelf();
+						end
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_NONE");
+						GameTooltip:SetPoint("BOTTOMRIGHT", "UIParent", "BOTTOMRIGHT", -CONTAINER_OFFSET_X - 13, CONTAINER_OFFSET_Y);
+						GameTooltip:AddLine("Assign ticket");
+						GameTooltip:AddLine("Left click to assign to self.");
+						GameTooltip:AddLine("Right click to assign to someone else.");
+						GameTooltip:Show();
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+           
+		</Frames>
+	</Button>
+    
+    
+    
+    
+    <Button name="GMTickets_AssignPopup" inherits="GMGenie_Window">
+		<Size>
+			<AbsDimension x="190" y="60"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" />
+		</Anchors>
+        <Scripts>
+            <OnLoad>
+                getglobal(self:GetName().."_Text"):SetText("Assign To");
+            </OnLoad>
+            <OnDoubleClick>
+                this:ClearAllPoints();
+                this:SetPoint("CENTER");
+            </OnDoubleClick>
+        </Scripts>
+		<Frames>
+			<Button name="$parent_Button3" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="8" y="8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HideUIPanel(self:GetParent());
+					</OnClick>
+				</Scripts>
+			</Button>
+			<EditBox name="$parent_GMName" enableMouse="true" inherits="GMGenie_Input_Text">
+				<Size>
+					<AbsDimension x="100" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT">
+						<Offset>
+							<AbsDimension x="15" y="-5"/>
+						</Offset>
+                    </Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>
+						GMTickets.assignTo();
+					</OnEnterPressed>
+				</Scripts>
+			</EditBox>
+			<Button name="$parent_Send" inherits="GMGenie_Button" text="Assign">
+				<Anchors>
+					<Anchor point="RIGHT">
+						<Offset>
+							<AbsDimension x="-15" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GMTickets.assignTo();
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Button>
+    
+    <Button name="GMTickets_CommentPopup" inherits="GMGenie_Window">
+		<Size>
+			<AbsDimension x="190" y="60"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" />
+		</Anchors>
+        <Scripts>
+            <OnLoad>
+                getglobal(self:GetName().."_Text"):SetText("Set Comment");
+            </OnLoad>
+            <OnDoubleClick>
+                this:ClearAllPoints();
+                this:SetPoint("CENTER");
+            </OnDoubleClick>
+        </Scripts>
+		<Frames>
+			<Button name="$parent_Button3" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="8" y="8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HideUIPanel(self:GetParent());
+					</OnClick>
+				</Scripts>
+			</Button>
+			<EditBox name="$parent_Comment" enableMouse="true" inherits="GMGenie_Input_Text">
+				<Size>
+					<AbsDimension x="100" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT">
+						<Offset>
+							<AbsDimension x="15" y="-5"/>
+						</Offset>
+                    </Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>
+						GMTickets.setComment();
+					</OnEnterPressed>
+				</Scripts>
+			</EditBox>
+			<Button name="$parent_Send" inherits="GMGenie_Button" text="Comment">
+				<Anchors>
+					<Anchor point="RIGHT">
+						<Offset>
+							<AbsDimension x="-15" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GMTickets.setComment();
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Button>
+</Ui>
