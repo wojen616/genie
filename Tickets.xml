@@ -108,7 +108,7 @@
 
     <Button name="GMGenie_Tickets_Main" inherits="GMGenie_Window">
         <Size>
-            <AbsDimension x="370" y="235"/>
+            <AbsDimension x="380" y="235"/>
         </Size>
         <Anchors>
             <Anchor point="TOPLEFT"/>
@@ -132,7 +132,7 @@
         <Frames>
             <Button name="$parent_ticketId" inherits="GMGenie_LeftButton" text="#">
                 <Size>
-                    <AbsDimension x="40" y="18"/>
+                    <AbsDimension x="50" y="18"/>
                 </Size>
                 <Anchors>
                     <Anchor point="TOPLEFT">
