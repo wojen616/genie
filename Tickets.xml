@@ -578,7 +578,7 @@
                 </Anchors>
                 <Scripts>
                     <OnEnterPressed>
-                        GMGenie.Tickets.ResponseSet();
+                        
                     </OnEnterPressed>
                 </Scripts>
             </EditBox>
