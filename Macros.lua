@@ -25,18 +25,7 @@ function GMGenie.Macros.onLoad()
     UnitPopupButtons["GMGenie_Unfreeze"] = { text = "Unfreeze", dist = 0 };
     table.insert(UnitPopupMenus["GMGenie_Commands"], "GMGenie_Unfreeze");
 
-    UnitPopupButtons["GMGenie_Character"] = { text = "Character", dist = 0, nested = 1 };
-    table.insert(GMGenie.Macros.menuItems, "Character");
-    UnitPopupMenus["GMGenie_Character"] = {};
-
-    UnitPopupButtons["GMGenie_Character_Rename"] = { text = "Rename", dist = 0 };
-    table.insert(UnitPopupMenus["GMGenie_Character"], "GMGenie_Character_Rename");
-    UnitPopupButtons["GMGenie_Character_Customize"] = { text = "Customize", dist = 0 };
-    table.insert(UnitPopupMenus["GMGenie_Character"], "GMGenie_Character_Customize");
-    UnitPopupButtons["GMGenie_Character_Changerace"] = { text = "Change Race", dist = 0 };
-    table.insert(UnitPopupMenus["GMGenie_Character"], "GMGenie_Character_Changerace");
-    UnitPopupButtons["GMGenie_Character_Changefaction"] = { text = "Change Faction", dist = 0 };
-    table.insert(UnitPopupMenus["GMGenie_Character"], "GMGenie_Character_Changefaction");
+    
 
     UnitPopupButtons["GMGenie_Whispers"] = { text = "Whisper Macros", dist = 0, nested = 1 };
     table.insert(GMGenie.Macros.menuItems, "Whispers");
@@ -65,6 +54,19 @@ function GMGenie.Macros.onLoad()
     UnitPopupButtons["GMGenie_IpBan"] = { text = "Ip Bans", dist = 0, nested = 1 };
     table.insert(GMGenie.Macros.menuItems, "IpBan");
     GMGenie.Macros.Discipline.IpBan.addToUnitMenu();
+
+    UnitPopupButtons["GMGenie_Character"] = { text = "Character", dist = 0, nested = 1 };
+    table.insert(GMGenie.Macros.menuItems, "Character");
+    UnitPopupMenus["GMGenie_Character"] = {};
+
+    UnitPopupButtons["GMGenie_Character_Rename"] = { text = "Rename", dist = 0 };
+    table.insert(UnitPopupMenus["GMGenie_Character"], "GMGenie_Character_Rename");
+    UnitPopupButtons["GMGenie_Character_Customize"] = { text = "Customize", dist = 0 };
+    table.insert(UnitPopupMenus["GMGenie_Character"], "GMGenie_Character_Customize");
+    UnitPopupButtons["GMGenie_Character_Changerace"] = { text = "Change Race", dist = 0 };
+    table.insert(UnitPopupMenus["GMGenie_Character"], "GMGenie_Character_Changerace");
+    UnitPopupButtons["GMGenie_Character_Changefaction"] = { text = "Change Faction", dist = 0 };
+    table.insert(UnitPopupMenus["GMGenie_Character"], "GMGenie_Character_Changefaction");
 
     for _, button in ipairs(GMGenie.Macros.menuItems) do
         table.insert(UnitPopupMenus["PLAYER"], #UnitPopupMenus["PLAYER"] - 1, "GMGenie_" .. button);
