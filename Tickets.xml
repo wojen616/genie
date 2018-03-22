@@ -420,7 +420,7 @@
                 </Scripts>
             </Button>
 
-            <Button name="$parent_Delete" inherits="GMGenie_Button" text='Delete'>
+            <Button name="$parent_Delete" inherits="GMGenie_Button" text='Close'>
                 <Anchors>
                     <Anchor point="BOTTOMLEFT">
                         <Offset>
