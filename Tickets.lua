@@ -466,7 +466,7 @@ function GMGenie.Tickets.Response()
 end
 
 function GMGenie.Tickets.Pinfo()
-    SendChatMessage(".playerinfo ", "GUILD");
+    --SendChatMessage(".playerinfo ", "GUILD");
 end
 -- /
 
