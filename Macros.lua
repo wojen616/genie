@@ -14,18 +14,20 @@ function GMGenie.Macros.onLoad()
     table.insert(GMGenie.Macros.menuItems, "Commands");
     UnitPopupMenus["GMGenie_Commands"] = {};
 
-    UnitPopupButtons["GMGenie_Revive"] = { text = "Revive", dist = 0 };
-    table.insert(UnitPopupMenus["GMGenie_Commands"], "GMGenie_Revive");
     UnitPopupButtons["GMGenie_Appear"] = { text = "Appear", dist = 0 };
     table.insert(UnitPopupMenus["GMGenie_Commands"], "GMGenie_Appear");
     UnitPopupButtons["GMGenie_Summon"] = { text = "Summon", dist = 0 };
     table.insert(UnitPopupMenus["GMGenie_Commands"], "GMGenie_Summon");
+    UnitPopupButtons["GMGenie_Revive"] = { text = "Revive", dist = 0 };
+    table.insert(UnitPopupMenus["GMGenie_Commands"], "GMGenie_Revive");
     UnitPopupButtons["GMGenie_Freeze"] = { text = "Freeze", dist = 0 };
     table.insert(UnitPopupMenus["GMGenie_Commands"], "GMGenie_Freeze");
     UnitPopupButtons["GMGenie_Unfreeze"] = { text = "Unfreeze", dist = 0 };
     table.insert(UnitPopupMenus["GMGenie_Commands"], "GMGenie_Unfreeze");
 
-    
+    UnitPopupButtons["GMGenie_Mute"] = { text = "Mutes", dist = 0, nested = 1 };
+    table.insert(GMGenie.Macros.menuItems, "Mute");
+    GMGenie.Macros.Discipline.Mute.addToUnitMenu();
 
     UnitPopupButtons["GMGenie_Whispers"] = { text = "Whisper Macros", dist = 0, nested = 1 };
     table.insert(GMGenie.Macros.menuItems, "Whispers");
@@ -38,10 +40,6 @@ function GMGenie.Macros.onLoad()
     UnitPopupButtons["GMGenie_Tele"] = { text = "Teleport Macros", dist = 0, nested = 1 };
     table.insert(GMGenie.Macros.menuItems, "Tele");
     GMGenie.Macros.Tele.addToUnitMenu();
-
-    UnitPopupButtons["GMGenie_Mute"] = { text = "Mutes", dist = 0, nested = 1 };
-    table.insert(GMGenie.Macros.menuItems, "Mute");
-    GMGenie.Macros.Discipline.Mute.addToUnitMenu();
 
     UnitPopupButtons["GMGenie_CharBan"] = { text = "Character Bans", dist = 0, nested = 1 };
     table.insert(GMGenie.Macros.menuItems, "CharBan");
@@ -90,12 +88,12 @@ function GMGenie.Macros.contextMenuClick(self)
     if (startPos == 1) then
         button = string.sub(button, 9);
 
-        if button == "Revive" then
-            GMGenie.Macros.revive(name);
-        elseif button == "Appear" then
+        if button == "Appear" then
             GMGenie.Macros.appear(name);
         elseif button == "Summon" then
             GMGenie.Macros.summon(name);
+        elseif button == "Revive" then
+            GMGenie.Macros.revive(name);
         elseif button == "Freeze" then
             GMGenie.Macros.freeze(name);
         elseif button == "Unfreeze" then
