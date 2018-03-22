@@ -576,11 +576,6 @@
                         </Offset>
                     </Anchor>
                 </Anchors>
-                <Scripts>
-                    <OnEnterPressed>
-                        
-                    </OnEnterPressed>
-                </Scripts>
             </EditBox>
             <Button name="$parent_ResponseButton" inherits="GMGenie_Button" text="Response">
                 <Anchors>
