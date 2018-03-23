@@ -466,9 +466,12 @@ function GMGenie.Tickets.Response()
 end
 
 function GMGenie.Tickets.Pinfo()
-    --\[(.*?)\]
-    local nameString = string.match(GMGenie.Tickets.currentTicket["name"], "%[(%a+)%]")
-    SendChatMessage(".pinfo " .. nameString, "GUILD");
+    local nameString = string.match(GMGenie.Tickets.currentTicket["name"], "%[(%D+)%]")
+    if nameString == nil then 
+        print("error")
+    else
+        SendChatMessage(".pinfo " .. nameString, "GUILD");
+    end
 end
 -- /
 
