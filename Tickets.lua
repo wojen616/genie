@@ -466,7 +466,9 @@ function GMGenie.Tickets.Response()
 end
 
 function GMGenie.Tickets.Pinfo()
-    --SendChatMessage(".playerinfo ", "GUILD");
+    --\[(.*?)\]
+    local nameString = string.match(GMGenie.Tickets.currentTicket["name"], "%[(%a+)%]")
+    SendChatMessage(".pinfo " .. nameString, "GUILD");
 end
 -- /
 
