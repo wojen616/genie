@@ -10,7 +10,7 @@
             <Layer level="BORDER">
                 <FontString name="$parent_ticketId" inherits="GenieFontNormalSmall" justifyH="LEFT">
                     <Size>
-                        <AbsDimension x="40" y="14"/>
+                        <AbsDimension x="50" y="14"/>
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
