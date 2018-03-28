@@ -447,6 +447,7 @@
                     </OnClick>
                 </Scripts>
             </Button>
+            
             <Button name="$parent_Assign" inherits="GMGenie_Button" text='Assign'>
                 <Anchors>
                     <Anchor point="LEFT" relativeTo="$parent_Delete" relativePoint="RIGHT"/>
@@ -493,6 +494,19 @@
                 <Scripts>
                     <OnClick>
                         GMGenie.Tickets.Response();
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button name="$parent_Link2Chat" inherits="GMGenie_Button" text='L2C'>
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="$parent_RespMainBtn" relativePoint="Right"/>
+                    <Offset>
+                    <AbsDimension x="10" y="10"/>
+                    </Offset>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        GMGenie.Tickets.L2C();
                     </OnClick>
                 </Scripts>
             </Button>

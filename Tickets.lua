@@ -465,13 +465,21 @@ function GMGenie.Tickets.Response()
 
 end
 
-function GMGenie.Tickets.Pinfo()
-    local nameString = string.match(GMGenie.Tickets.currentTicket["name"], "%[(%D+)%]")
+function DecodeName(name)
+    local nameString = string.match(name, "%[(%D+)%]")
     if nameString == nil then 
         print("error")
     else
-        SendChatMessage(".pinfo " .. nameString, "GUILD");
+        return nameString
     end
+end
+
+function GMGenie.Tickets.Pinfo()
+    SendChatMessage(".pinfo " .. DecodeName(GMGenie.Tickets.currentTicket["name"]), "GUILD"); 
+end
+
+function GMGenie.Tickets.L2C()
+    SendChatMessage("Ticket ID: " .. GMGenie.Tickets.currentTicket["ticketId"] .." By: " .. DecodeName(GMGenie.Tickets.currentTicket["name"]), "GUILD");
 end
 -- /
 
