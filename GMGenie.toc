@@ -27,8 +27,8 @@ Macros.Whispers.lua
 Macros.Whispers.xml
 Tickets.lua
 Tickets.xml
-Spawns.lua
-Spawns.xml
+Quests.lua
+Quests.xml
 
 Options\GMGenie.lua
 Options\GMGenie.xml
@@ -42,5 +42,5 @@ Options\Macros.Tele.lua
 Options\Macros.Tele.xml
 Options\Macros.Whispers.lua
 Options\Macros.Whispers.xml
-Options\Spawns.lua
-Options\Spawns.xml
+#Options\Spawns.lua
+#Options\Spawns.xml

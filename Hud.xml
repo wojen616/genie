@@ -27,7 +27,7 @@
 
     <Button name="GMGenie_Hud" inherits="GMGenie_Window" hidden="false">
         <Size>
-            <AbsDimension x="100" y="140"/>
+            <AbsDimension x="100" y="158"/>
         </Size>
         <Anchors>
             <Anchor point="TOPRIGHT" relativeTo="MinimapCluster" relativePoint="BOTTOMRIGHT"/>
@@ -112,6 +112,19 @@
                         GMGenie.Tickets.toggle();
                     </OnClick>
                 </Scripts>
+            </Button>
+            <Button name="$parent_Builder" inherits="GMGenie_Button" text="Quest Helper">
+            <Size>
+                <AbsDimension x="90" y="18"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeTo="GMGenie_Hud_Tickets" relativePoint="BOTTOMLEFT"/>
+            </Anchors>
+            <Scripts>
+                <OnClick>
+                    GMGenie.Quests.toggle();
+                </OnClick>
+            </Scripts>
             </Button>
         </Frames>
     </Button>

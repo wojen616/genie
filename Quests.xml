@@ -1,0 +1,38 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+ http://wowprogramming.com/FrameXML/UI.xsd">
+    <Button name="GMGenie_Quests_Main" inherits="GMGenie_Window" hidden="true">
+        <Size>
+            <AbsDimension x="180" y="267"/>
+        </Size>
+        <Anchors>
+            <Anchor point="LEFT"/>
+        </Anchors>
+        <Scripts>
+            <OnLoad>
+                GMGenie.loadWindow(self, 'Quests', false, nil);
+            </OnLoad>
+            <OnDoubleClick>
+                self:ClearAllPoints();
+                self:SetPoint("LEFT");
+            </OnDoubleClick>
+        </Scripts>
+        <Frames>
+            <Frame name="$parent_Coords">
+                <Size>
+                    <AbsDimension x="170" y="23"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset>
+                            <AbsDimension x="0" y="-19"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+               
+            </Frame>
+           
+        </Frames>
+    </Button>
+</Ui>

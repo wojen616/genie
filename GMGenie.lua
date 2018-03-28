@@ -44,7 +44,6 @@ function GMGenie.onLoad()
     GMGenie.Hud.onLoad();
 
     GMGenie.Macros.onLoad();
-    GMGenie.Spawns.onLoad();
 
     --UIDropDownMenu_Initialize(GMGenie_Spy_InfoWindow_DropdownbuttonsTwo, GMGenie.Spy.loadDropdown, "MENU");
 
@@ -54,7 +53,6 @@ function GMGenie.onLoad()
     GMGenie.Macros.Mail.optionsOnLoad();
     GMGenie.Macros.Tele.optionsOnLoad();
     GMGenie.Macros.Discipline.optionsOnLoad()
-    GMGenie.Spawns.optionsOnLoad();
 
     GMGenie.minimap.reposition();
     GMGenie.Tickets.onLoad();
